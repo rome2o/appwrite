@@ -682,33 +682,33 @@ services:
   # Chronograf - A nice UI for exploring InfluxDB data
   # Webgrind - A nice UI for exploring and debugging code-level stuff
 
-  maildev: # used mainly for dev tests
-    image: appwrite/mailcatcher:1.0.0
-    container_name: appwrite-mailcatcher
-    <<: *x-logging
-    ports:
-      - '9503:1080'
-    networks:
-      - appwrite
+  # maildev: # used mainly for dev tests
+  #   image: appwrite/mailcatcher:1.0.0
+  #   container_name: appwrite-mailcatcher
+  #   <<: *x-logging
+  #   ports:
+  #     - '9503:1080'
+  #   networks:
+  #     - appwrite
 
-  request-catcher: # used mainly for dev tests
-    image: appwrite/requestcatcher:1.0.0
-    container_name: appwrite-requestcatcher
-    <<: *x-logging
-    ports:
-      - '9504:5000'
-    networks:
-      - appwrite
+  # request-catcher: # used mainly for dev tests
+  #   image: appwrite/requestcatcher:1.0.0
+  #   container_name: appwrite-requestcatcher
+  #   <<: *x-logging
+  #   ports:
+  #     - '9504:5000'
+  #   networks:
+  #     - appwrite
 
-  adminer:
-    image: adminer
-    container_name: appwrite-adminer
-    <<: *x-logging
-    restart: always
-    ports:
-      - 9506:8080
-    networks:
-      - appwrite
+  # adminer:
+  #   image: adminer
+  #   container_name: appwrite-adminer
+  #   <<: *x-logging
+  #   restart: always
+  #   ports:
+  #     - 9506:8080
+  #   networks:
+  #     - appwrite
 
   # redis-commander:
   #   image: rediscommander/redis-commander:latest
