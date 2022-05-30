@@ -382,7 +382,11 @@ $register->set('dbPool', function () { // Register DB connection
     $dbUser = App::getEnv('_APP_DB_USER', '');
     $dbPass = App::getEnv('_APP_DB_PASS', '');
     $dbScheme = App::getEnv('_APP_DB_SCHEMA', '');
-
+    echo 'host '.$dbHost;
+    echo 'port '.$dbPort;
+    echo 'user '.$dbUser;
+    echo 'scheme '.$dbScheme;
+    echo 'pass '.$dbPass;
     $pool = new PDOPool((new PDOConfig())
         ->withHost($dbHost)
         ->withPort($dbPort)
