@@ -382,27 +382,8 @@ $register->set('dbPool', function () { // Register DB connection
     $dbUser = App::getEnv('_APP_DB_USER', '');
     $dbPass = App::getEnv('_APP_DB_PASS', '');
     $dbScheme = App::getEnv('_APP_DB_SCHEMA', '');
-    $pool = null;
-    $pool = (function(){
-        $parts = (parse_url(App::getEnv('_APP_DB_URL')));
-        extract($parts);
-        $path = ltrim($path, "/");
-        echo 'connection pool setup with '.$path;
-        return new PDOPool((new PDOConfig())
-        ->withHost($host)
-        ->withPort($port)
-        ->withDbName($path)
-        ->withCharset('utf8mb4')
-        ->withUsername($user)
-        ->withPassword($pass)
-        ->withOptions([
-            PDO::ATTR_ERRMODE => App::isDevelopment() ? PDO::ERRMODE_WARNING : PDO::ERRMODE_SILENT, // If in production mode, warnings are not displayed
-        ])
-    , 64);
-    })();
 
-    if ($pool == null) {
-        $pool = new PDOPool((new PDOConfig())
+    $pool = new PDOPool((new PDOConfig())
         ->withHost($dbHost)
         ->withPort($dbPort)
         ->withDbName($dbScheme)
@@ -411,8 +392,8 @@ $register->set('dbPool', function () { // Register DB connection
         ->withPassword($dbPass)
         ->withOptions([
             PDO::ATTR_ERRMODE => App::isDevelopment() ? PDO::ERRMODE_WARNING : PDO::ERRMODE_SILENT, // If in production mode, warnings are not displayed
-        ]), 64);
-    }
+        ])
+    , 64);
 
     return $pool;
 });
