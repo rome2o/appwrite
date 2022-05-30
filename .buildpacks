@@ -1,2 +1,2 @@
 https://github.com/heroku/heroku-buildpack-nodejs.git
-https://heroku-php-extensions.s3.amazonaws.com/dist-heroku-20-stable/
+https://github.com/heroku/heroku-buildpack-php.git
