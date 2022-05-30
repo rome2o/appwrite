@@ -1,6 +1,6 @@
 {
     "name": "appwrite/server-ce",
-    "description": "End to end backend server for frontend and mobile apps.",
+    "description": "End to end backend server for frontend and mobile apps .",
     "type": "project",
     "license": "BSD-3-Clause",
     "authors": [
