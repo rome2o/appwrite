@@ -234,6 +234,8 @@ RUN \
 WORKDIR /usr/src/code
 
 COPY --from=composer /usr/local/src/vendor /usr/src/code/vendor
+COPY --from=composer /usr/local/src/composer.json /usr/src/code/composer.json
+COPY --from=composer /usr/local/src/composer.lock /usr/src/code/composer.lock
 COPY --from=node /usr/local/src/public/dist /usr/src/code/public/dist
 COPY --from=swoole /usr/local/lib/php/extensions/no-debug-non-zts-20200930/swoole.so /usr/local/lib/php/extensions/no-debug-non-zts-20200930/yasd.so* /usr/local/lib/php/extensions/no-debug-non-zts-20200930/
 COPY --from=redis /usr/local/lib/php/extensions/no-debug-non-zts-20200930/redis.so /usr/local/lib/php/extensions/no-debug-non-zts-20200930/
