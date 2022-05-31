@@ -407,10 +407,13 @@ $register->set('redisPool', function () {
     $redisUser = App::getEnv('_APP_REDIS_USER', '');
     $redisPass = App::getEnv('_APP_REDIS_PASS', '');
     $redisAuth = '';
-
+    
     if ($redisUser && $redisPass) {
         $redisAuth = $redisUser.':'.$redisPass;
+        echo 'redis auth '. $redisAuth.PHP_EOL;
     }
+    echo 'port '.$redisPort.PHP_EOL;
+    echo 'host '.$redisHost.PHP_EOL;
 
     $pool = new RedisPool((new RedisConfig)
         ->withHost($redisHost)
@@ -418,7 +421,7 @@ $register->set('redisPool', function () {
         ->withAuth($redisAuth)
         ->withDbIndex(0)
     , 64);
-
+    echo 'Pool '.$pool;
     return $pool;
 });
 $register->set('influxdb', function () { // Register DB connection
