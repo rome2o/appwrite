@@ -407,10 +407,14 @@ $register->set('redisPool', function () {
     $redisUser = App::getEnv('_APP_REDIS_USER', '');
     $redisPass = App::getEnv('_APP_REDIS_PASS', '');
     $redisAuth = '';
-
+    echo $redisHost;
+    echo $redisPort;
+    echo $redisPass;
+    echo $redisUser;
     if ($redisUser && $redisPass) {
         $redisAuth = $redisUser.':'.$redisPass;
     }
+    echo $redisUser;
 
     $pool = new RedisPool((new RedisConfig)
         ->withHost($redisHost)
