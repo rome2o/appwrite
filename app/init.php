@@ -407,13 +407,9 @@ $register->set('redisPool', function () {
     $redisUser = App::getEnv('_APP_REDIS_USER', '');
     $redisPass = App::getEnv('_APP_REDIS_PASS', '');
     $redisAuth = '';
-    echo ($redisUser || $redisPass);
-    echo $redisUser;
-    echo $redisPass;
-    if ($redisUser || $redisPass) {
-        echo 'condition worked';
+
+    if ($redisUser && $redisPass) {
         $redisAuth = $redisUser.':'.$redisPass;
-        echo $redisAuth;
     }
 
     $pool = new RedisPool((new RedisConfig)
