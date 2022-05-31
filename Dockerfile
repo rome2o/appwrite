@@ -19,6 +19,7 @@ WORKDIR /usr/local/src/
 COPY package-lock.json /usr/local/src/
 COPY package.json /usr/local/src/
 COPY gulpfile.js /usr/local/src/
+COPY Procfile /usr/local/src/
 COPY public /usr/local/src/public
 
 RUN npm ci
