@@ -414,12 +414,12 @@ $register->set('redisPool', function () {
     if ($redisUser && $redisPass) {
         $redisAuth = $redisUser.':'.$redisPass;
     }
-    echo $redisUser;
+    echo $redisAuth;
 
     $pool = new RedisPool((new RedisConfig)
         ->withHost($redisHost)
         ->withPort($redisPort)
-        ->withAuth($redisAuth)
+        ->withAuth($redisPass)
         ->withDbIndex(0)
     , 64);
 
