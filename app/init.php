@@ -382,11 +382,7 @@ $register->set('dbPool', function () { // Register DB connection
     $dbUser = App::getEnv('_APP_DB_USER', '');
     $dbPass = App::getEnv('_APP_DB_PASS', '');
     $dbScheme = App::getEnv('_APP_DB_SCHEMA', '');
-    echo 'host '.$dbHost;
-    echo 'port '.$dbPort;
-    echo 'user '.$dbUser;
-    echo 'scheme '.$dbScheme;
-    echo 'pass '.$dbPass;
+
     $pool = new PDOPool((new PDOConfig())
         ->withHost($dbHost)
         ->withPort($dbPort)
@@ -406,20 +402,16 @@ $register->set('redisPool', function () {
     $redisPort = App::getEnv('_APP_REDIS_PORT', '');
     $redisUser = App::getEnv('_APP_REDIS_USER', '');
     $redisPass = App::getEnv('_APP_REDIS_PASS', '');
-    $redisAuth = '';
-    echo $redisHost;
-    echo $redisPort;
-    echo $redisPass;
-    echo $redisUser;
-    if ($redisUser && $redisPass) {
+    $redisAuth = App::getEnv('_APP_REDIS_AUTH', '');
+
+    if (!$redisAuth && ($redisUser && $redisPass)) {
         $redisAuth = $redisUser.':'.$redisPass;
     }
-    echo $redisAuth;
 
     $pool = new RedisPool((new RedisConfig)
         ->withHost($redisHost)
         ->withPort($redisPort)
-        ->withAuth($redisPass)
+        ->withAuth($redisAuth)
         ->withDbIndex(0)
     , 64);
 
