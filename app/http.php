@@ -20,7 +20,7 @@ use Appwrite\Utopia\Request;
 use Utopia\Logger\Log;
 use Utopia\Logger\Log\User;
 
-$http = new Server("0.0.0.0", App::getEnv('PORT', 80));
+$http = new Server("0.0.0.0", App::getEnv('PORT', 5000));
 
 $payloadSize = 6 * (1024 * 1024); // 6MB
 $workerNumber = swoole_cpu_num() * intval(App::getEnv('_APP_WORKER_PER_CORE', 6));

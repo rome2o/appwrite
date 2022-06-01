@@ -310,6 +310,6 @@ RUN echo "default_socket_timeout=-1" >> /usr/local/etc/php/conf.d/appwrite.ini
 RUN echo "opcache.jit_buffer_size=100M" >> /usr/local/etc/php/conf.d/appwrite.ini
 RUN echo "opcache.jit=1235" >> /usr/local/etc/php/conf.d/appwrite.ini
 
-EXPOSE 80
+EXPOSE 5000
 
 CMD [ "php", "app/http.php", "-dopcache.preload=opcache.preload=/usr/src/code/app/preload.php" ]
